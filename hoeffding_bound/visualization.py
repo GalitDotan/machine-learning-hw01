@@ -18,5 +18,6 @@ hoeffding = 2 * numpy.exp(-2 * COLS * epsilons ** 2)
 
 plt.plot(epsilons, empirical_probabilities, label='empirical probabilities')
 plt.plot(epsilons, hoeffding, label='hoeffding bound')
+plt.xlabel('Epsilon')
 plt.legend()
 plt.show()
