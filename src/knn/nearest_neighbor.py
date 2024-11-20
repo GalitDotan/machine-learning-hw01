@@ -84,7 +84,6 @@ def _plot_results(x_values: np.array, accuracy_values: np.array, x_label: str,
               fontstyle='italic')
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f'{plot_name}.png', format='png', dpi=300)
     plt.show()
 
 
