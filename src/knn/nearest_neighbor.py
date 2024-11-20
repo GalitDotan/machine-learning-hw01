@@ -46,7 +46,7 @@ def knn_predict(n: int = TRAIN_SIZE,
     return mode_labels
 
 
-def _run_simulation(n: int, k: int) -> float:
+def run_simulation(n: int, k: int) -> float:
     """
     Runs the nearest neighbor and calculates accuracy percentage.
 
@@ -69,7 +69,7 @@ def run_question_b(n: int = 1000, k: int = 10):
     This prints the answer of question (b)
     """
     print('\n*** Started part (b) ***')
-    accuracy = _run_simulation(n=n, k=k)
+    accuracy = run_simulation(n=n, k=k)
     print(f'Result for n={n}, k={k} is {accuracy}')
     print('Finished part (b) ***')
 
@@ -95,7 +95,7 @@ def run_question_c(n: int = 1000):
     """
     print('\n*** Started part (c) ***')
     k_values = np.array(range(1, 101))
-    accuracy = np.array([_run_simulation(n, k) for k in k_values])
+    accuracy = np.array([run_simulation(n, k) for k in k_values])
     best_k_index = np.argmax(accuracy)
     print(f'Best accuracy is {accuracy[best_k_index]}, for k = {k_values[best_k_index]}')
     _plot_results(x_values=k_values,
@@ -112,7 +112,7 @@ def run_question_d(k: int = 1):
     """
     print('\n*** Started part (d) ***')
     n_values = np.array(range(100, 5001, 100))
-    accuracy = np.array([_run_simulation(n, k) for n in n_values])
+    accuracy = np.array([run_simulation(n, k) for n in n_values])
     _plot_results(x_values=n_values,
                   accuracy_values=accuracy,
                   x_label='n',
