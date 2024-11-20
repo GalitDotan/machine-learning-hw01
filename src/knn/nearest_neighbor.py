@@ -40,7 +40,7 @@ def knn_predict(n: int = TRAIN_SIZE,
 
     distances = euclidean_distances(TEST_IMAGES, train_images)
 
-    k_nearest_indexes = np.argpartition(distances, k, axis=1)[:, :k]
+    k_nearest_indexes = np.argsort(distances, axis=1)[:, :k]
     k_labels = train_labels[k_nearest_indexes]
     mode_labels = np.array([Counter(row).most_common(1)[0][0] for row in k_labels])
     return mode_labels

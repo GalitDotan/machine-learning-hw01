@@ -77,3 +77,23 @@ def test_question_d(k: int = 1):
                   plot_name='Result (d)')
     assert accuracy_2023 == accuracy_2024
     print('Finished part (d) ***')
+
+
+def test_run_simulation(n: int = 1000, k: int = 10):
+    """
+    Runs the nearest neighbor and calculates accuracy percentage.
+
+    Args:
+        n: number of training images. Would take the first n of `train`.
+        k: amount of nearest neighbors.
+
+    Returns:
+        (float) accuracy percentage
+
+    """
+    predicted_labels_2023 = np.array([
+        knn2023.k_nearest_neighbors(images=knn2024.TRAIN_IMAGES[:n], labels=knn2024.TRAIN_LABELS[:n],
+                                    query_image=image, k=k) for image in knn2024.TEST_IMAGES])
+    predicted_labels_2024 = knn2024.knn_predict(n, k)
+    diff = len(knn2024.TEST_IMAGES) - np.sum(predicted_labels_2024 == predicted_labels_2023)
+    print(diff)
